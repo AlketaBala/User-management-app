@@ -26,7 +26,7 @@ const App = () => { //Create the state variable users to store the list that is 
 
    const FilterUsers = users.filter((user) => //Here is the filter where we can filter the users based on search input
     user.name.toLowerCase().includes(input.toLowerCase()) || //by name
-   user.email.toLowerCase().includes(input.toLowerCase()) // or by email
+    user.email.toLowerCase().includes(input.toLowerCase()) // or by email
    );
 
    return (
@@ -36,11 +36,6 @@ const App = () => { //Create the state variable users to store the list that is 
      <input onChange={e=>setInput(e.target.value)} type ="text" placeholder="Search" className="search"/>
      </div>
 
-     <div className="output"> 
-      {users.map(item=>(
-        <p>{item.name}</p>
-      ))}
-     </div>
 
      <div>
       {
