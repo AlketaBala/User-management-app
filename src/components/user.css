@@ -1,0 +1,6 @@
+.list{ /*this is the styling part of user list*/
+    display: flex; 
+    width: 600px;
+    justify-content: space-between;
+    margin: 5px;
+}
