@@ -13,6 +13,7 @@ const App = () => { //Create the state variable users to store the list that is 
    const [users, setUsers] = useState([]);
    const [input, setInput] =useState(''); // Here can be stored the text entered in search bar
    const location = useLocation();
+   const [sortOption, setSortOption]= useState('') //creating a state for sorting
 
       useEffect(() => { 
       fetchData();
@@ -34,19 +35,38 @@ const App = () => { //Create the state variable users to store the list that is 
    }
    console.log(users)
 
-   const FilterUsers = users.filter((user) => //Here is the filter where we can filter the users based on search input
+   let FilterUsers = users.filter((user) => //Here is the filter where we can filter the users based on search input
     user.name.toLowerCase().includes(input.toLowerCase()) || //by name
     user.email.toLowerCase().includes(input.toLowerCase()) // or by email
    );
 
+    if (sortOption === "name-asc"){ // Sorting Part
+      FilterUsers.sort((a,b)=> a.name.localeCompare(b.name));
+    } else if (sortOption==="name-desc") {
+        FilterUsers.sort((a,b)=> b.name.localeCompare(a.name));
+      } else if (sortOption==="email-asc") {
+        FilterUsers.sort((a,b)=> a.email.localeCompare(b.email));
+    }else if (sortOption === "email-desc") {
+      FilterUsers.sort((a,b)=> b.email.localeCompare(a.email));
+    }
   
-   return (
+   return (// The routes part and the dropdown component for sorting options
     <Routes>
       <Route path="/" element={
      <div className="App">
      <h1>User Management App</h1>
      <div className="Search-Bar">
      <input onChange={e=>setInput(e.target.value)} type ="text" placeholder="Search" className="search"/>
+     </div>
+ 
+     <div className="Sort-Bar"> 
+      <select value={sortOption} onChange= {(e)=> setSortOption(e.target.value)}>
+        <option value="">Sort By</option>
+        <option value="name-asc">Name A-Z</option>
+        <option value="name-desc">Name Z-A</option>
+        <option value="email-asc">Email A-Z</option>
+        <option value="email-desc">Email Z-A</option>
+      </select>
      </div>
  
 
