@@ -24,5 +24,12 @@ fetching.
 ### Home Page (Main Page)
 ![Home Page](./assets/Foto1-Homepage.png)
  Here you can see there is the search bar in which you can search by name and email and all the users with that name or email will show up 
- ![Home Page](./assets/foto2-homepage.png)
+ ![Home Page](./assets/foto2-homepage.jpeg)
 The Sort By dropdown component is used to sort the list of users by Name or Email in (A-Z) or (Z-A)
+ 
+![Home Page](./assets/Foto1A-Z-HomePage.png)
+Here you can see the sorting of user list by name in version A-Z
+
+![Home Page](./assets/Foto2Z-A-HomePage.png)
+And here is the sorting of user list by name in version Z-A, same goes for sorting with email too.
+
