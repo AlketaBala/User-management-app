@@ -10,7 +10,8 @@ const UserDetailsPage =()=> {
 
 if(!user){
     return <p>No user available</p>
-}
+}// Here its all the details of the user that will be shown 
+// A button that you can click to get back to the homepage
     return (
         <div>
             <h1>User Details Page</h1>
@@ -22,7 +23,7 @@ if(!user){
            
       
         <Link to="/">
-            <button>Back to home</button>
+            <button>Back to home</button> 
         </Link>
           </div>
     )
