@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react'  //Importing React hooks
 import './App.css' 
 import User from './components/User' //Importing the User component to use here
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import UserDetailsPage from './pages/UserDetailsPage';
 import logo from './logo.svg';
-import addUserPage from './pages/addUserPage';
-
+import AddUserPage from './pages/addUserPage';
+import {useLocation} from 'react-router-dom';
 
 
 const App = () => { //Create the state variable users to store the list that is fetched from the API
 
    const [users, setUsers] = useState([]);
    const [input, setInput] =useState(''); // Here can be stored the text entered in search bar
-   
+   const location = useLocation();
 
       useEffect(() => { 
       fetchData();
-   },[])
+   },[]);
+
+   useEffect(()=> {
+    if(location.state && location.state.newUser){
+      setUsers((prevUsers)=>[location.state.newUser, ...prevUsers]);
+    }
+   },[location.state]);
 
    const fetchData = async () => { // using fetchData function to fetch user Data from the API and saving it in users State 
     await fetch('https://jsonplaceholder.typicode.com/users')
@@ -35,7 +41,6 @@ const App = () => { //Create the state variable users to store the list that is 
 
   
    return (
-    <BrowserRouter>
     <Routes>
       <Route path="/" element={
      <div className="App">
@@ -51,7 +56,7 @@ const App = () => { //Create the state variable users to store the list that is 
         // users id, name, email and company name
         //When clicking a user through this link we can navigate to Details Page about that user
         <Link to={`/user/${user.id}`} key={user.id} state={{user}}>
-        <User id={user.id} key={user.id} name= {user.name} email={user.email} company={user.company.name} /> 
+        <User id={user.id} key={user.id} name= {user.name} email={user.email} company={(user.company && user.company.name)? user.company.name: "N/A"} /> 
        </Link>
        ))
       }
@@ -66,10 +71,10 @@ const App = () => { //Create the state variable users to store the list that is 
     </div>
       }
       />
-      <Route path="/addUser" element ={<addUserPage/>} />
+      <Route path="/addUser" element ={<AddUserPage/>} />
       <Route path="/user/:id" element={<UserDetailsPage/>} />
     </Routes>
-    </BrowserRouter>
+    
    )
 
 
