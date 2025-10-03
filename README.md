@@ -24,6 +24,9 @@ fetching.
 ### Home Page (Main Page)
 ![Home Page](./assets/Foto1-Homepage.png)
  Here you can see there is the search bar in which you can search by name and email and all the users with that name or email will show up 
+ ![Home Page](./assets/Foto4-Homepage.png)
+For example if we search "Nic" only one user shows up
+
  ![Home Page](./assets/foto2-homepage.jpeg)
 The Sort By dropdown component is used to sort the list of users by Name or Email in (A-Z) or (Z-A)
  
@@ -32,4 +35,27 @@ Here you can see the sorting of user list by name in version A-Z
 
 ![Home Page](./assets/Foto2Z-A-HomePage.png)
 And here is the sorting of user list by name in version Z-A, same goes for sorting with email too.
+
+![Home Page](./assets/Foto3-Homepage.png)
+In the end of the User List, there is the button "Add User" to add User locally. 
+
+If you click on the button Add User a form will show up 
+![Home Page](./assets/Foto1-Form.png)
+In this form Username, Email and Company are required as you can see in the other photo down
+![Home Page](./assets/Foto5-Form.png)
+ 
+ Besides being required, there is a regex to check if the written email is valid (see in the picture down)
+ ![Home Page](./assets/Foto3-Form.png)
+
+So all three fields should be fullfilled and the email should be in a valid form 
+ ![Home Page](./assets/foto-form6.png)
+ And then successfully the user will be added
+
+View detailed user info
+You can click on any User that you want to see more details about them
+![Home Page](./assets/Foto1-UserDetailsPage.png)
+And then Use "Back to Home" Button to get back to homepage
+
+
+
 
