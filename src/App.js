@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'  //Importing React hooks
 import './App.css' 
 import User from './components/User' //Importing the User component to use here
-import logo from './logo.svg'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import UserDetailsPage from './pages/UserDetailsPage';
+import logo from './logo.svg';
+
 
 
 const App = () => { //Create the state variable users to store the list that is fetched from the API
@@ -30,21 +33,32 @@ const App = () => { //Create the state variable users to store the list that is 
    );
 
    return (
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={
      <div className="App">
      <h1>User Management App</h1>
      <div className="Search-Bar">
      <input onChange={e=>setInput(e.target.value)} type ="text" placeholder="Search" className="search"/>
      </div>
-
+ 
 
      <div>
       {
        FilterUsers.map((user) => ( // Here is the display of users that we search for
-        <User id={user.id} key={user.id} name= {user.name} email={user.email} company={user.company.name} /> // users id, name, email and company name
+        // users id, name, email and company name
+        <Link to={`/user/${user.id}`} key={user.id} state={{user}}>
+        <User id={user.id} key={user.id} name= {user.name} email={user.email} company={user.company.name} /> 
+       </Link>
        ))
       }
      </div>
     </div>
+      }
+      />
+      <Route path="/user/:id" element={<UserDetailsPage/>} />
+    </Routes>
+    </BrowserRouter>
    )
 
 
